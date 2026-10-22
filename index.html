@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#190d1c" />
+  <title>Untuk Kamu, Sayang 🤍</title>
+  <style>
+    :root { --pink:#ff9fca; --cream:#fff4e9; --gold:#ffd58a; }
+    * { box-sizing:border-box; }
+    body {
+      margin:0; min-height:100vh; color:var(--cream);
+      font-family: Georgia, "Times New Roman", serif;
+      background: radial-gradient(ellipse at 50% 20%, #54223e 0%, #261326 48%, #100b18 100%);
+      overflow-x:hidden;
+    }
+    .stars, .hearts { position:fixed; inset:0; pointer-events:none; overflow:hidden; }
+    .star { position:absolute; width:2px; height:2px; border-radius:50%; background:#fff4d6; animation:twinkle 2.5s infinite ease-in-out; }
+    @keyframes twinkle { 0%,100%{opacity:.25;transform:scale(.7)} 50%{opacity:1;transform:scale(1.4)} }
+    .wrap { position:relative; z-index:1; width:min(920px, 100%); margin:auto; padding:32px 18px 70px; text-align:center; }
+    .eyebrow { letter-spacing:.24em; text-transform:uppercase; font: 11px Arial,sans-serif; color:#f7bdd7; }
+    h1 { font-size:clamp(2rem, 7vw, 4.1rem); line-height:1.08; font-weight:normal; margin:12px 0; }
+    .subtitle { color:#f4dce8; line-height:1.8; max-width:580px; margin:0 auto; font-size:1.05rem; }
+    .cake-scene { margin:24px auto 18px; width:min(540px,100%); position:relative; padding-top:10px; }
+    .glow { position:absolute; width:80%; height:210px; left:10%; top:40px; background:#ff9fc9; filter:blur(70px); opacity:.2; border-radius:50%; }
+    .cake { position:relative; width:min(360px,82vw); height:190px; margin:0 auto; }
+    .candles { position:absolute; z-index:3; top:0; left:50%; transform:translateX(-50%); display:flex; gap:18px; align-items:flex-end; }
+    .candle { width:13px; height:66px; border-radius:5px 5px 2px 2px; background:repeating-linear-gradient(135deg,#fff0e8 0 7px,#ff8eb9 7px 13px); position:relative; box-shadow:0 0 9px #ffc1d4aa; }
+    .flame { position:absolute; width:15px; height:23px; background:radial-gradient(ellipse at 50% 70%, #fffbd0 0 20%, #ffdf74 45%, #ff8a3d 75%, transparent 78%); border-radius:50% 50% 45% 45%; top:-25px; left:-1px; transform-origin:50% 100%; animation:flicker .16s infinite alternate; filter:drop-shadow(0 0 8px #ffba56); }
+    @keyframes flicker { from{transform:rotate(-5deg) scale(.94)} to{transform:rotate(5deg) scale(1.08)} }
+    .cake-top { position:absolute; bottom:55px; left:0; width:100%; height:72px; border-radius:50%; background:linear-gradient(#fff4ec,#ffc3d7); border:3px solid #ffe5e9; box-shadow:inset 0 -9px 0 #f59bbb, 0 8px 18px #0005; z-index:2; }
+    .cake-body { position:absolute; bottom:0; left:4%; width:92%; height:78px; border-radius:0 0 22px 22px; background:linear-gradient(90deg,#f4a6c4,#fff0e4 25%,#ffd0df 70%,#ee91b8); box-shadow:inset 0 -9px 0 #d96f9f, 0 17px 25px #0005; }
+    .icing { position:absolute; z-index:3; bottom:43px; left:5%; width:90%; height:26px; border-radius:0 0 50% 50%; background:#fff0e8; clip-path:polygon(0 0,100% 0,100% 60%,91% 100%,80% 55%,68% 100%,55% 60%,43% 100%,29% 55%,17% 100%,7% 60%,0 100%); }
+    .cake-heart { position:absolute; z-index:4; bottom:66px; left:50%; transform:translateX(-50%); color:#b83e73; font-size:25px; text-shadow:0 2px #fff; }
+    .plate { width:min(420px,95%); height:22px; margin:-1px auto 0; border-radius:50%; background:linear-gradient(#fff4e9,#cba6b6); border:2px solid #e9c6d1; box-shadow:0 12px 20px #0005; }
+    .wish { font-size:clamp(1.1rem,3vw,1.45rem); line-height:1.8; font-style:italic; margin:24px auto; max-width:650px; color:#ffe9f2; min-height:82px; }
+    .actions { display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin:22px 0 34px; }
+    button { border:1px solid #ffc6dc; border-radius:999px; padding:13px 22px; color:#321426; background:linear-gradient(135deg,#ffe4ed,#ff9fc7); font-weight:bold; cursor:pointer; box-shadow:0 8px 22px #0003; transition:transform .2s,filter .2s; }
+    button:hover { transform:translateY(-2px); filter:brightness(1.06); }
+    button.secondary { color:#ffe7f1; background:#ffffff10; border-color:#ffffff45; }
+    .letter { display:none; text-align:left; max-width:740px; margin:24px auto; padding:clamp(22px,5vw,42px); border:1px solid #f7c3d64d; border-radius:22px; background:linear-gradient(145deg,#fff8f0f2,#f8dbe8f2); color:#46263a; box-shadow:0 20px 60px #0004; line-height:1.9; animation:rise .8s ease both; }
+    .letter.show { display:block; }
+    .letter h2 { text-align:center; font-weight:normal; color:#9d3d6b; }
+    .letter blockquote { margin:20px 0; padding-left:18px; border-left:2px solid #d779a1; font-style:italic; }
+    @keyframes rise { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
+    .footer { color:#dcb7ca; font-size:.85rem; margin-top:35px; }
+    .floating-heart { position:absolute; bottom:-40px; color:#ff9fc9; animation:floatUp 7s linear forwards; opacity:.8; }
+    @keyframes floatUp { to{transform:translateY(-110vh) rotate(35deg);opacity:0} }
+    .blown .flame { display:none; }
+    .blown .candle { opacity:.82; }
+    .hint { color:#d9b8cb; font:12px Arial,sans-serif; }
+    @media (prefers-reduced-motion: reduce) { *,*::before,*::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; scroll-behavior:auto !important; } }
+  </style>
+</head>
+<body>
+  <div class="stars" id="stars"></div><div class="hearts" id="hearts"></div>
+  <main class="wrap">
+    <p class="eyebrow">sebuah hari untuk dirayakan</p>
+    <h1>Selamat Ulang Tahun,<br><span style="color:#ffb6d4">Sayangku</span> 🤍</h1>
+    <p class="subtitle">Di antara begitu banyak hari yang datang dan pergi, hari ini selalu punya tempat istimewa—hari ketika semesta menghadirkanmu ke dunia.</p>
+
+    <section class="cake-scene" aria-label="Kue ulang tahun dengan lilin menyala">
+      <div class="glow"></div>
+      <div class="cake" id="cake">
+        <div class="candles">
+          <div class="candle"><span class="flame"></span></div>
+          <div class="candle"><span class="flame"></span></div>
+          <div class="candle"><span class="flame"></span></div>
+          <div class="candle"><span class="flame"></span></div>
+          <div class="candle"><span class="flame"></span></div>
+        </div>
+        <div class="cake-top"></div><div class="cake-body"></div><div class="icing"></div><div class="cake-heart">♥</div>
+      </div>
+      <div class="plate"></div>
+    </section>
+
+    <p class="wish" id="wish">Pejamkan matamu, buatlah sebuah harapan, dan biarkan semesta mendengar doa-doa terbaikmu.</p>
+    <div class="actions">
+      <button id="blow">✨ Tiup Lilin</button>
+      <button class="secondary" id="openLetter">💌 Buka Surat Cinta</button>
+      <button class="secondary" id="musicBtn">♫ Musik: nonaktif</button>
+    </div>
+    <p class="hint">Tarik napas, buat harapan, lalu tekan “Tiup Lilin”.</p>
+
+    <article class="letter" id="letter">
+      <h2>Untuk Kamu, yang Lahir Bersama Bahagia</h2>
+      <p>Selamat bertambah usia, kasihku.</p>
+      <p>Di antara sekian banyak tanggal yang singgah di kalender, ada satu hari yang selalu ingin saya rayakan dengan lebih khidmat—hari ketika semesta menghadirkanmu ke dunia. Hari ketika seseorang yang kelak begitu berarti bagi saya memulai kisahnya sendiri, tanpa pernah tahu bahwa suatu hari ia akan menjadi bagian terindah dari kisah orang lain.</p>
+      <p>Sayang, jika waktu adalah sungai yang tak pernah berhenti mengalir, izinkan saya menjadi seseorang yang tetap memilih berlayar bersamamu, bahkan ketika arus tak selalu tenang dan langit tak selamanya cerah. Sebab mencintaimu bukan hanya tentang menikmati senja yang indah, melainkan juga tentang bertahan ketika malam terasa begitu panjang.</p>
+      <p>Pada usiamu yang baru ini, saya tidak meminta semesta menghadiahkanmu kehidupan tanpa luka. Saya hanya berharap, ketika luka datang, kamu selalu menemukan alasan untuk kembali sembuh. Ketika langkahmu terasa berat, semoga ada kekuatan yang diam-diam tumbuh di dalam dirimu. Dan ketika dunia terasa terlalu bising, semoga kamu masih memiliki tempat untuk pulang—tempat di mana kamu tak perlu menjadi siapa-siapa selain dirimu sendiri.</p>
+      <p>Jika boleh menitipkan satu doa kepada waktu, saya ingin kita diberi kesempatan untuk menua bersama. Menyaksikan rambut yang perlahan memutih, tawa yang tetap sama meski wajah mulai berubah, dan tangan yang mungkin tak lagi sekuat hari ini, tetapi masih saling menggenggam dengan keyakinan yang tak pernah berkurang.</p>
+      <p>Saya ingin mengenalmu dalam banyak musim kehidupan—mencintaimu ketika kamu sedang bersinar, memelukmu ketika kamu kehilangan arah, dan tetap memilihmu ketika waktu mengubah banyak hal dari kita.</p>
+      <blockquote>Jika suatu hari nanti kamu bertanya, sampai kapan saya akan mencintaimu, mungkin saya tak akan menjawab dengan janji tentang selamanya. Saya hanya akan menggenggam tanganmu hari itu, lalu memilihmu sekali lagi—sebagaimana saya ingin melakukannya pada hari-hari setelahnya.</blockquote>
+      <p>Sebab selama waktu masih memberi kita hari, selama semesta masih mengizinkan kita bertemu dalam pagi yang baru, saya ingin tetap menjadi seseorang yang menyebut namamu dalam doa, menyimpanmu dalam harapan, dan mencintaimu dalam diam maupun dalam segala cara yang mampu saya lakukan.</p>
+      <p><strong>Selamat ulang tahun, rumah bagi sebagian tenang saya.</strong> Semoga segala yang baik menemukan jalan pulang kepadamu. Semoga hatimu tak pernah kehabisan alasan untuk percaya bahwa kebahagiaan masih menunggumu di depan sana.</p>
+      <p>Hari ini adalah hari kelahiranmu, tetapi entah bagaimana, saya juga merasa menjadi orang yang beruntung karena dunia pernah memutuskan untuk menghadirkanmu.</p>
+      <p>Semoga, di antara banyak kemungkinan yang ditawarkan kehidupan, kita masih menjadi dua orang yang saling memilih. Hari ini, esok, dan selama kita masih diberi waktu. 🤍</p>
+      <p style="text-align:center;margin-top:28px"><em>Ditulis dengan cinta, untuk seseorang yang selalu punya tempat di hati.</em></p>
+    </article>
+    <p class="footer">🌷 Hari ini, esok, dan selama kita masih diberi waktu. 🌷</p>
+  </main>
+  <script>
+    const stars = document.getElementById('stars');
+    for (let i=0;i<90;i++) {
+      const s=document.createElement('span'); s.className='star';
+      s.style.left=Math.random()*100+'%'; s.style.top=Math.random()*100+'%';
+      s.style.animationDelay=(Math.random()*3)+'s'; s.style.opacity=Math.random();
+      stars.appendChild(s);
+    }
+    function heart() {
+      const h=document.createElement('span'); h.className='floating-heart';
+      h.textContent=['♥','♡','✦'][Math.floor(Math.random()*3)];
+      h.style.left=Math.random()*100+'%'; h.style.fontSize=(14+Math.random()*22)+'px';
+      h.style.animationDuration=(5+Math.random()*4)+'s';
+      document.getElementById('hearts').appendChild(h);
+      setTimeout(()=>h.remove(),9500);
+    }
+    let heartTimer;
+    function celebrate(){ for(let i=0;i<18;i++) setTimeout(heart,i*100); }
+    document.getElementById('blow').addEventListener('click',()=>{
+      document.getElementById('cake').classList.add('blown');
+      document.getElementById('wish').textContent='Semoga semua doa baik menemukan jalan menuju hatimu. Dan semoga salah satu harapanmu adalah kita—yang terus saling memilih.';
+      celebrate();
+      document.getElementById('blow').textContent='🤍 Harapan terkirim';
+    });
+    document.getElementById('openLetter').addEventListener('click',()=>{
+      const letter=document.getElementById('letter');
+      letter.classList.toggle('show');
+      document.getElementById('openLetter').textContent=letter.classList.contains('show')?'💌 Tutup Surat':'💌 Buka Surat Cinta';
+      if(letter.classList.contains('show')) letter.scrollIntoView({behavior:'smooth',block:'start'});
+    });
+    // Optional ambient sound using Web Audio; starts only after user interaction.
+    let audioCtx=null, oscillator=null, gain=null, playing=false;
+    document.getElementById('musicBtn').addEventListener('click', async ()=>{
+      const btn=document.getElementById('musicBtn');
+      if(!playing){
+        try {
+          audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
+          await audioCtx.resume();
+          gain=audioCtx.createGain(); gain.gain.value=0.018; gain.connect(audioCtx.destination);
+          oscillator=audioCtx.createOscillator(); oscillator.type='sine'; oscillator.frequency.value=261.63; oscillator.connect(gain); oscillator.start();
+          playing=true; btn.textContent='♫ Musik: aktif';
+        } catch(e) { btn.textContent='♫ Audio tidak tersedia'; }
+      } else {
+        if(oscillator){ oscillator.stop(); oscillator.disconnect(); oscillator=null; }
+        if(gain){ gain.disconnect(); gain=null; }
+        playing=false; btn.textContent='♫ Musik: nonaktif';
+      }
+    });
+  </script>
+</body>
+</html>
