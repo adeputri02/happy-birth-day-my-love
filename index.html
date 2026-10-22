@@ -131,23 +131,29 @@
       if(letter.classList.contains('show')) letter.scrollIntoView({behavior:'smooth',block:'start'});
     });
     // Musik Happy Birthday dari file hbd.mp3 di folder yang sama.
-    const music = document.getElementById('birthdayMusic');
-    const musicBtn = document.getElementById('musicBtn');
-    music.volume = 0.4;
+    const music = document.getElementById("birthdayMusic");
+const musicBtn = document.getElementById("musicBtn");
 
-    musicBtn.addEventListener('click', async () => {
-      try {
-        if (music.paused) {
-          await music.play();
-          musicBtn.textContent = '♫ Musik: aktif';
-        } else {
-          music.pause();
-          musicBtn.textContent = '♫ Musik: nonaktif';
-        }
-      } catch (error) {
-        alert('Musik gagal diputar. Pastikan file hbd.mp3 sudah di-upload ke folder yang sama dengan index.html.');
-      }
-    });
+music.volume = 0.5;
+
+musicBtn.addEventListener("click", async () => {
+  try {
+    if (music.paused) {
+      await music.play();
+      musicBtn.textContent = "♫ Musik: aktif";
+    } else {
+      music.pause();
+      musicBtn.textContent = "♫ Musik: nonaktif";
+    }
+  } catch (error) {
+    console.error(error);
+    alert("Musik gagal diputar. Silakan coba lagi.");
+  }
+});
+
+music.addEventListener("ended", () => {
+  musicBtn.textContent = "♫ Musik: nonaktif";
+});
   </script>
 </body>
 </html>
